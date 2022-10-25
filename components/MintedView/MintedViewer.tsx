@@ -49,6 +49,13 @@ function ProductSimple({image, name, text}: any) {
               filter: 'blur(20px)',
             },
           }}>
+          <Image
+            rounded={'lg'}
+            height={230}
+            width={282}
+            objectFit={'cover'}
+            src={image}
+          />
 {/*   <Image
       loader={image}
       src="me.png"

@@ -30,7 +30,6 @@ import { ChakraProvider } from '@chakra-ui/react';
 import createEmotionCache from "../createEmotionCache";
 import { CacheProvider } from "@emotion/react";
 require('@solana/wallet-adapter-react-ui/styles.css');
-require('../styles/globals.css');
 
 const clientSideEmotionCache = createEmotionCache();
 

@@ -42,8 +42,10 @@ const ConnectButton = styled(WalletMultiButton)`
   font-weight: bold;
 `;
 
-const MintContainer = styled.div``; // add your owns styles here
-
+const MintContainer = styled.div`
+  background: white;
+  color: black;
+`; 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
   connection: anchor.web3.Connection;
@@ -493,8 +495,9 @@ const Home = (props: HomeProps) => {
           style={{
             padding: 24,
             paddingBottom: 10,
-            backgroundColor: "#151A1F",
+            backgroundColor: "white",
             borderRadius: 6,
+
           }}
         >
           {!wallet.connected ? (
@@ -509,12 +512,11 @@ const Home = (props: HomeProps) => {
                   wrap="nowrap"
                 >
                   <Grid item xs={3}>
-                    <Typography variant="body2" color="textSecondary">
+                    <Typography variant="body2" >
                       Remaining
                     </Typography>
                     <Typography
                       variant="h6"
-                      color="textPrimary"
                       style={{
                         fontWeight: "bold",
                       }}
@@ -523,14 +525,13 @@ const Home = (props: HomeProps) => {
                     </Typography>
                   </Grid>
                   <Grid item xs={4}>
-                    <Typography variant="body2" color="textSecondary">
+                    <Typography variant="body2" >
                       {isWhitelistUser && discountPrice
                         ? "Discount Price"
                         : "Price"}
                     </Typography>
                     <Typography
                       variant="h6"
-                      color="textPrimary"
                       style={{ fontWeight: "bold" }}
                     >
                       {isWhitelistUser && discountPrice
@@ -639,14 +640,6 @@ const Home = (props: HomeProps) => {
               </MintContainer>
             </>
           )}
-          <Typography
-            variant="caption"
-            align="center"
-            display="block"
-            style={{ marginTop: 7, color: "grey" }}
-          >
-            Powered by METAPLEX
-          </Typography>
         </Paper>
       </Container>
 
