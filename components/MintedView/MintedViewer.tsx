@@ -55,6 +55,7 @@ function ProductSimple({image, name, text}: any) {
             width={282}
             objectFit={'cover'}
             src={image}
+	    alt="anotheralternate"
           />
 {/*   <Image
       loader={image}

@@ -27,6 +27,7 @@ export default function DirectorCard() {
           <Image
             objectFit="cover"
             boxSize="100%"
+	    alt="somealt2"
             src={
 'https://images.pexels.com/photos/2918590/pexels-photo-2918590.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
             }

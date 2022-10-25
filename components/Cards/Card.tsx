@@ -31,7 +31,7 @@ const CardWithImage = ({ image, text, title }) => {
           pos={"relative"}
         >
           <Link href="/film">
-            <Image src={"https:" + image} layout={"fill"} />
+            <Image src={"https:" + image} alt="placeholder" layout={"fill"} />
           </Link>
         </Box>
         <Stack>

@@ -16,10 +16,10 @@ const candyMachineId = new PublicKey("9k6NTDLxFt99oXDgaMX5FHdBBGXRRgwfW75MS8SRbs
       console.log(owned);
       })();
     }
-  }, [publicKey]);
+  }, [publicKey, candyMachineId]);
   return (
     <>
-    <div>{ownedNfts.map((item)=>{return <div>count</div>})}</div>
+    <div>{ownedNfts.map((item, i)=>{return <div key={i}>count</div>})}</div>
     </>
   );
 };

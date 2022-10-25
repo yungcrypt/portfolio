@@ -30,6 +30,7 @@ const CardWithImage = ({image, text, title}) => {
           <Image
             src={image}
             layout={'fill'}
+	    alt="somealt"
           />
         </Box>
         <Stack>
