@@ -6,6 +6,7 @@ import { Container, Snackbar } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Alert from "@material-ui/lab/Alert";
 import Grid from "@material-ui/core/Grid";
+import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import {
   Commitment,
@@ -36,15 +37,16 @@ const ConnectButton = styled(WalletMultiButton)`
   height: 60px;
   margin-top: 10px;
   margin-bottom: 5px;
-  background: linear-gradient(180deg, #604ae5 0%, #813eee 100%);
+  background: none;
   color: white;
   font-size: 16px;
   font-weight: bold;
 `;
 
 const MintContainer = styled.div`
-  background: white;
-  color: black;
+  background: none;
+  color: white;
+  width: 400px;
 `; 
 export interface HomeProps {
   candyMachineId?: anchor.web3.PublicKey;
@@ -76,7 +78,7 @@ const Home = (props: HomeProps) => {
   const rpcUrl = props.rpcHost;
   const wallet = useWallet();
   const cluster = props.network;
-  const anchorWallet = useMemo(() => {
+  const anchorWallet: any = useMemo(() => {
     if (
       !wallet ||
       !wallet.publicKey ||
@@ -488,15 +490,25 @@ const Home = (props: HomeProps) => {
     })();
   }, [refreshCandyMachineState]);
 
+const getSol = () => {
+
+return (async () => {
+  // 1e9 lamports = 10^9 lamports = 1 SOL
+  let txhash = await props.connection.requestAirdrop(wallet.publicKey, 1e9);
+  console.log(`txhash: ${txhash}`);
+})();
+
+}
   return (
     <Container style={{ marginTop: 100 }}>
-      <Container maxWidth="xs" style={{ position: "relative" }}>
+      <Container maxWidth="sm" style={{ position: "relative" }}>
         <Paper
           style={{
             padding: 24,
             paddingBottom: 10,
-            backgroundColor: "white",
+            background: 'none',
             borderRadius: 6,
+	    color: 'white',
 
           }}
         >
@@ -640,6 +652,10 @@ const Home = (props: HomeProps) => {
               </MintContainer>
             </>
           )}
+	<Button onClick={()=>{
+getSol()	}}>
+	Request Dev Sol
+	</Button>
         </Paper>
       </Container>
 

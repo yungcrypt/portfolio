@@ -1,3 +1,20 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 .App {
   text-align: center;
+  background:black;
+  height:100vh;
+overflow: hidden;
+
+}
+
+body {
+	position: absolute;
+  background:black;
+}
+
+.pointer-events-none {
+	pointer-events: none;
 }

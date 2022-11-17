@@ -2,9 +2,6 @@ import React from 'react';
 import Image from 'next/image';
 import {
   Box,
-  Center,
-  Heading,
-  Text,
   Stack,
   Avatar,
   useColorModeValue,
@@ -23,6 +20,7 @@ import DirectorCard from '../components/Cards/DirectorCard';
 import GetOwnedNfts from '../components/MintedView/MintedViewer';
 import SplitWithImage from '../components/Cards/About';
 import { createTheme, ThemeProvider } from '@material-ui/core';
+import { Html , Billboard, Text, Center,  Preload , ScrollControls, Scroll} from '@react-three/drei'
 
 const theme = createTheme({
   palette: {
@@ -86,74 +84,16 @@ const Film = ({ films }: InferGetStaticPropsType<typeof getStaticProps>) => {
       image: film.fields.thumbnail.fields.file.url,
     };
   });
-  return (
-    <>
-      <div
-        style={{
-          backgroundImage: 'url(' + items[0].image + ')',
-          //	height:"400px",
-          backgroundPosition: 'center',
-        }}
-      >
-        <div style={{ 
-		fontSize: '44px', 
-		color: 'white', 
-		margin:"auto", 
-		textAlign:"center",
-		paddingTop: "50px"
-		}}>
-		THE THIRD FILM</div>
-        <div style={{ height: '200px' }}></div>
-	<div style={{
-		background: "linear-gradient(to top, rgba(0,0,0,.9), transparent)",
-		height:"200px"
-
-	}}>
-	<div style={{
-		display:'flex',
-		justifyContent:"space-between", 
-		width:"90%", 
-		margin:"auto",
-
-		}}>
-        <div style={{ display:"flex", flexDirection:"column",justifyContent:"center" }}>
-        <div style={{ fontSize: '24px', color: 'white' }}>Director</div>
-        <div style={{ fontSize: '16px', color: 'white' }}>Lindsey James</div>
-	
-	</div>
-        <div style={{ display:"flex", flexDirection:"column",justifyContent:"center" }}>
-        <div style={{ fontSize: '24px', color: 'white' }}>Director</div>
-        <div style={{ fontSize: '16px', color: 'white' }}>Lindsey James</div>
-	
-	</div>
-        <div style={{ display:"flex", flexDirection:"column",justifyContent:"center" }}>
-        <div style={{ fontSize: '24px', color: 'white' }}>Director</div>
-        <div style={{ fontSize: '16px', color: 'white' }}>Lindsey James</div>
-	
-	</div>
-        <div style={{ display:"flex", flexDirection:"column",justifyContent:"center" }}>
-        <div style={{ fontSize: '24px', color: 'white' }}>Director</div>
-        <div style={{ fontSize: '16px', color: 'white' }}>Lindsey James</div>
-	
-	</div>
-	</div>
-	</div>
-
-      </div>
-      <DirectorCard />
-          <ThemeProvider theme={theme}>
-      <SplitWithImage
-        candyMachineId={candyMachineId}
-        connection={connection}
-        txTimeout={60000}
-        rpcHost={rpcHost}
-        network={network}
-        error={error}
-
-      />
-          </ThemeProvider>
-      <GetOwnedNfts/>
-    </>
+  return (<></>
   );
 };
+
+Film.canvas = (props: any) => (<>
+  <Html
+   center={true}
+   transform={true}
+  >
+      </Html>
+
+</>)
 export default Film;

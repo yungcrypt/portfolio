@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useWallet } from '@solana/wallet-adapter-react';
 import getOwned from '../../sol/getOwned';
+import { Html , Billboard, CameraShake, useAspect,  Preload , TransformControls, Scroll} from '@react-three/drei'
 import {
   Box,
   Center,
@@ -16,7 +17,7 @@ const IMAGE =
 
 function ProductSimple({image, name, text}: any) {
   return (
-    <Center py={12}>
+    <Center py={12} sx={{margin:'20px'}}>
       <Box
         role={'group'}
         p={6}
@@ -72,7 +73,7 @@ function ProductSimple({image, name, text}: any) {
             {name}
           </Heading>
           <Stack direction={'row'} align={'center'}>
-            <Text fontWeight={400} fontSize={'xl'}>
+            <Text fontWeight={400} fontSize={'xs'}>
               {text}
             </Text>
           </Stack>
@@ -85,7 +86,7 @@ function ProductSimple({image, name, text}: any) {
 
 const GetOwnedNfts = () => {
   const { publicKey, connected } = useWallet();
-  const [ownedNfts, setOwnedNfts] = useState<any[]>([{}])
+  const [ownedNfts, setOwnedNfts] = useState<any[]>([{},{},{}])
   useEffect(() => {
     if (publicKey !== null) {
     (async ()=>{
@@ -97,7 +98,7 @@ const GetOwnedNfts = () => {
     }
   }, [publicKey]);
   return (
-    <div style={{display:"flex",flexDirection:"row" ,width:"90%", maxWidth:"900px", margin: "auto"}}>
+    <div style={{display:"flex",flexDirection:"row" ,width:"100%", maxWidth:"900px", margin: "auto"}}>
     {ownedNfts.map((item)=>{return <div key={item.image}>
     <ProductSimple image={item.image} name={item.name} text={item.description}/>
     </div>})}
@@ -106,3 +107,34 @@ const GetOwnedNfts = () => {
 };
 
 export default GetOwnedNfts;
+
+export const GetOwnedNfts3D = () => {
+  const { publicKey, connected } = useWallet();
+  const [ownedNfts, setOwnedNfts] = useState<any[]>([{},{},{}])
+  useEffect(() => {
+    if (publicKey !== null) {
+    (async ()=>{
+      console.log(publicKey.toBase58());
+      const owned = await getOwned(publicKey.toBase58());
+      setOwnedNfts(owned)
+      console.log(owned);
+      })();
+    }
+  }, [publicKey]);
+
+const scale = useAspect(
+  1024,                     // Pixel-width
+  512,                      // Pixel-height
+  1                         // Optional scaling factor
+)
+
+  return (<>
+    {ownedNfts.map((item: any)=>{ 
+    return( 
+    <mesh scale={scale}>
+    <planeGeometry />
+    <meshBasicMaterial map={item.image} />
+    </mesh>)})}
+  </>);
+};
+
